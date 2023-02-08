@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<h1>Register</h1>
+<form  data-th-object="${user}"
+       data-th-action="@{/user/register}"
+       method="post">
+    <div>
+        <label for="Nom">Nom</label>
+        <input id="Nom" type="text"
+               data-th-field="*{nom}">
+        <p data-th-if="${#fields.hasErrors('Nom')}"
+           data-th-text="${#strings.listJoin(#fields.errors('Nom'), ', ')}"></p>
+    </div>
+    <div>
+        <label for="Prenom">Prenom</label>
+        <input id="Prenom" type="text"
+               data-th-field="*{prenom}">
+        <p data-th-if="${#fields.hasErrors('Prenom')}"
+           data-th-text="${#strings.listJoin(#fields.errors('Prenom'), ', ')}"></p>
+    </div>
+    <div>
+        <label for="Adresse">Adresse</label>
+        <input id="Adresse" type="text"
+               data-th-field="*{adresse}">
+        <p data-th-if="${#fields.hasErrors('Adresse')}"
+           data-th-text="${#strings.listJoin(#fields.errors('Adresse'), ', ')}"></p>
+    </div>
+    <div>
+        <label for="Carte">Carte bancaire</label>
+        <input id="Carte" type="text"
+               data-th-field="*{carteBancaire}">
+        <p data-th-if="${#fields.hasErrors('carteBancaire')}"
+           data-th-text="${#strings.listJoin(#fields.errors('carteBancaire'), ', ')}"></p>
+    </div>
+    <div>
+        <label for="Phone">Téléphone</label>
+        <input id="Phone" type="text"
+               data-th-field="*{telephone}">
+        <p data-th-if="${#fields.hasErrors('telephone')}"
+           data-th-text="${#strings.listJoin(#fields.errors('telephone'), ', ')}"></p>
+    </div>
+    <div>
+        <label for="Mail">Mail</label>
+        <input id="Mail" type="email"
+               data-th-field="*{mail}">
+        <p data-th-if="${#fields.hasErrors('Mail')}"
+           data-th-text="${#strings.listJoin(#fields.errors('Mail'), ', ')}"></p>
+    </div>
+    <div>
+        <label for="pwd">Mot de passe</label>
+        <input id="pwd" type="password"
+               data-th-field="*{pwd}">
+        <p data-th-if="${#fields.hasErrors('pwd')}"
+           data-th-text="${#strings.listJoin(#fields.errors('pwd'), ', ')}"></p>
+    </div>
+    <button type="submit">Register</button>
+</form>
+</body>
+</html>

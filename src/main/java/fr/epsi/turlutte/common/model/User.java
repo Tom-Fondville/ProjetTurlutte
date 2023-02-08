@@ -1,11 +1,9 @@
 package fr.epsi.turlutte.common.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Entity @Getter @Setter @NoArgsConstructor
+@Entity @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class User {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,5 +17,5 @@ public class User {
     public String adresse;
     public String carteBancaire;
     public String telephone;
-    public String password;
+    public String pwd;
 }
