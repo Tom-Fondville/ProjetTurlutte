@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Bonsoir</h1>
+<tr data-th-each="product: ${ products }">
+    <p data-th-text="${ product.name }">le produit</p>
+    <p data-th-text="${ product.description }">le produit</p>
+    <p data-th-text="${ product.price }">le produit</p>
+</tr>
+</body>
+</html>
