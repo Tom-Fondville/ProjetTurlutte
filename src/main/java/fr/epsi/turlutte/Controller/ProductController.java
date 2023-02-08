@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path="/product")
+@RequestMapping(path="/admin/product")
 public class ProductController {
 
     @Autowired
@@ -24,67 +24,33 @@ public class ProductController {
     @Autowired
     CategorieRepository categorieRepository;
 
-    @GetMapping(path = "/get/{id}")
-    public Product getProduct(@PathVariable Long id) {
-        return productRepository.findById(id).orElse(null);
-    }
 
-    @PostMapping(path = "/add")
-    public boolean addProduct(@RequestBody Product product) {
-        Iterable<Product> products = productRepository.findAll();
-        for (var p: products) {
-            if (p.getName() == product.getName()) {
-                return false;
-            }
-        }
-        productRepository.save(product);
-        return true;
-    }
-
-    @DeleteMapping(path = "/delete/{id}")
-    public boolean deleteProduct(@PathVariable Long id) {
-        Optional<Product> product = productRepository.findById(id);
-
-        if (product.isPresent()) {
-            productRepository.deleteById(id);
-            return true;
-        }
-        return false;
-    }
-
-    @GetMapping(path = "/list")
-    public ModelAndView listProduct() {
-        ModelAndView mav = new ModelAndView("product_template");
-        Iterable<Product> productList = productRepository.findAll();
-        mav.addObject("products", productList);
-        return mav;
-    }
-
-    @GetMapping(path = "/tyme/all")
-    public ModelAndView getAllProduct(Model model) {
+    @GetMapping(path = "/get")
+    public ModelAndView getProducts() {
         ModelAndView mav = new ModelAndView("product_template");
         mav.addObject("products", productService.getAllProduct());
         return mav;
     }
 
-    @GetMapping(path = "/tyme/add")
-    public ModelAndView addProductPage(Model model) {
+    @GetMapping(path = "/add")
+    public ModelAndView addProductPage() {
         ModelAndView mav = new ModelAndView("productAdd_template");
         mav.addObject("product", new Product());
         mav.addObject("categories", categorieRepository.findAll());
         return mav;
     }
 
-    @PostMapping(path = "/tyme/add")
+    @PostMapping(path = "/add")
     public ModelAndView addOneProduct(@ModelAttribute("product") Product product,
+                                @RequestParam("id") Long id,
                                 @RequestParam("name") String name,
                                 @RequestParam("categorie") Long categorieID,
                                 @RequestParam("image") String image,
                                 @RequestParam("price") double price,
                                 @RequestParam("description") String description) {
-        ModelAndView mav = new ModelAndView("redirect:/product/tyme/all");
         Categorie categorie = categorieRepository.findById(categorieID).orElse(null);
         Product newProduct = Product.builder()
+                .id(id)
                 .image(image)
                 .categorie(categorie)
                 .price(price)
@@ -92,8 +58,42 @@ public class ProductController {
                 .name(name)
                 .build();
         productRepository.save(newProduct);
+        return new ModelAndView("redirect:/admin/product/get");
+    }
+
+    @GetMapping(path = "/delete/{id}")
+    public ModelAndView deleteProductId(@PathVariable Long id) {
+        productRepository.deleteById(id);
+        return new ModelAndView("redirect:/admin/product/get");
+    }
+    @GetMapping(path = "/update/{id}")
+    public ModelAndView updateProductId(@PathVariable Long id) {
+        Product existingProduct = productRepository.findById(id).get();
+
+        ModelAndView mav = new ModelAndView("productUpdate_template");
+        mav.addObject("product", existingProduct);
+        mav.addObject("categories", categorieRepository.findAll());
         return mav;
     }
 
+    @PostMapping(path = "/update")
+    public ModelAndView updateOneProduct(@ModelAttribute("product") Product product,
+                                      @RequestParam("id") Long id,
+                                      @RequestParam("name") String name,
+                                      @RequestParam("categorie") Long categorieID,
+                                      @RequestParam("image") String image,
+                                      @RequestParam("price") double price,
+                                      @RequestParam("description") String description) {
+        Categorie categorie = categorieRepository.findById(categorieID).orElse(null);
+        Product newProduct = productRepository.findById(id).orElse(null);
+        newProduct.setCategorie(categorie);
+        newProduct.setImage(image);
+        newProduct.setPrice(price);
+        newProduct.setDescription(description);
+        newProduct.setName(name);
+
+        productRepository.save(newProduct);
+        return new ModelAndView("redirect:/admin/product/get");
+    }
 
 }
