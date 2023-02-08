@@ -1,4 +1,4 @@
-package fr.epsi.Turlutte;
+package fr.epsi.turlutte;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

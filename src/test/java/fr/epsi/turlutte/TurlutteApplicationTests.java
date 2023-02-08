@@ -1,4 +1,4 @@
-package fr.epsi.Turlutte;
+package fr.epsi.turlutte;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
