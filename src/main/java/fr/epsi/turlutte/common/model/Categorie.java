@@ -14,8 +14,8 @@ public class Categorie {
 
     private String nom;
 
-    @OneToMany(mappedBy = "categorie", cascade = CascadeType.ALL)
-    private List<SousCategorie> sousCategorie;
+    @ManyToOne
+    private Categorie categorie;
 
 }
 
