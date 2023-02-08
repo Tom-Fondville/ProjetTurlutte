@@ -1,7 +1,10 @@
 package fr.epsi.turlutte.Controller;
 
+import fr.epsi.turlutte.Repository.CategorieRepository;
 import fr.epsi.turlutte.Repository.ProductRepository;
 import fr.epsi.turlutte.Service.ProductService;
+import fr.epsi.turlutte.common.enums.Qualite;
+import fr.epsi.turlutte.common.model.Categorie;
 import fr.epsi.turlutte.common.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -18,6 +21,8 @@ public class ProductController {
     ProductRepository productRepository;
     @Autowired
     ProductService productService;
+    @Autowired
+    CategorieRepository categorieRepository;
 
     @GetMapping(path = "/get/{id}")
     public Product getProduct(@PathVariable Long id) {
@@ -66,16 +71,26 @@ public class ProductController {
     public ModelAndView addProductPage(Model model) {
         ModelAndView mav = new ModelAndView("productAdd_template");
         mav.addObject("product", new Product());
+        mav.addObject("categories", categorieRepository.findAll());
         return mav;
     }
 
     @PostMapping(path = "/tyme/add")
     public ModelAndView addOneProduct(@ModelAttribute("product") Product product,
                                 @RequestParam("name") String name,
+                                @RequestParam("categorie") Long categorieID,
                                 @RequestParam("image") String image,
+                                @RequestParam("price") double price,
                                 @RequestParam("description") String description) {
         ModelAndView mav = new ModelAndView("redirect:/product/tyme/all");
-        Product newProduct = Product.builder().image(image).description(description).name(name).build();
+        Categorie categorie = categorieRepository.findById(categorieID).orElse(null);
+        Product newProduct = Product.builder()
+                .image(image)
+                .categorie(categorie)
+                .price(price)
+                .description(description)
+                .name(name)
+                .build();
         productRepository.save(newProduct);
         return mav;
     }

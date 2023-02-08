@@ -12,22 +12,30 @@
     <label for="Name">Name</label>
     <input id="Name" type="text"
            data-th-field="*{name}">
-    <p data-th-if="${#fields.hasErrors('Name')}"
-       data-th-text="${#strings.listJoin(#fields.errors('Name'), ', ')}"></p>
   </div>
   <div>
     <label for="Description">Description</label>
     <input id="Description" type="text"
            data-th-field="*{description}">
-    <p data-th-if="${#fields.hasErrors('Description')}"
-        data-th-text="${#strings.listJoin(#fields.errors('Description'), ', ')}"></p>
   </div>
   <div>
     <label for="Image">Image</label>
     <input id="Image" type="text"
            data-th-field="*{image}">
-    <p  data-th-if="${#fields.hasErrors('Image')}"
-        data-th-text="${#strings.listJoin(#fields.errors('Image'), ', ')}"></p>
+  </div>
+  <div>
+    <label for="Prix">Prix</label>
+    <input id="Prix" type="text"
+           data-th-field="*{price}">
+  </div>
+  <div>
+    <label for="Categorie">Category</label>
+    <select id="Categorie" name="Categorie" data-th-field="*{categorie}">
+      <option data-th-each="category : ${categories}"
+              data-th-value="${category.id}"
+              data-th-text="${category.nom}"
+      >
+    </select>
   </div>
   <button type="submit">Create user</button>
 </form>
