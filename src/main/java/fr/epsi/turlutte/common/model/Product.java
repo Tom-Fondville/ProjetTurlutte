@@ -20,5 +20,5 @@ public class Product {
     private String description;
 
     @ManyToOne
-    private Categorie categorie;
+    private Category category;
 }

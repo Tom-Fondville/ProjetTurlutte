@@ -31,10 +31,10 @@
   </div>
   <div>
     <label for="Categorie">Category</label>
-    <select id="Categorie" name="Categorie" data-th-field="*{categorie}">
+    <select id="Categorie" name="Categorie" data-th-field="*{category}">
       <option data-th-each="category : ${categories}"
               data-th-value="${category.id}"
-              data-th-text="${category.nom}"
+              data-th-text="${category.name}"
       >
     </select>
   </div>
