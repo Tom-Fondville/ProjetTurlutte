@@ -1,7 +1,7 @@
 package fr.epsi.turlutte.Controller;
 
-import fr.epsi.turlutte.Repository.CategorieRepository;
-import fr.epsi.turlutte.common.model.Categorie;
+import fr.epsi.turlutte.Repository.CategoryRepository;
+import fr.epsi.turlutte.common.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,24 +9,24 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/categorie")
-public class CategorieController {
+public class CategoryController {
 
     @Autowired
-    CategorieRepository categorieRepository;
+    CategoryRepository categoryRepository;
 
     @PostMapping(path= "/createCategorie")
-    public Long create(@RequestBody() Categorie categorie) {
-        categorieRepository.save(categorie);
-        Long response = categorieRepository.count();
+    public Long create(@RequestBody() Category category) {
+        categoryRepository.save(category);
+        Long response = categoryRepository.count();
         return response;
     }
 
     @DeleteMapping(path = "/deleteCategorie")
     public boolean delete(@RequestParam Long id) {
-        Optional<Categorie> response = categorieRepository.findById(id);
+        Optional<Category> response = categoryRepository.findById(id);
         if(response.isPresent()) {
-            Categorie categorie = response.get();
-            categorieRepository.delete(categorie);
+            Category category = response.get();
+            categoryRepository.delete(category);
             return true;
         }
         return false;

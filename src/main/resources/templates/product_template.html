@@ -5,10 +5,21 @@
 </head>
 <body>
 <h1>Bonsoir</h1>
-<tr data-th-each="product: ${ products }">
-    <p data-th-text="${ product.name }">le produit</p>
-    <p data-th-text="${ product.description }">le produit</p>
-    <p data-th-text="${ product.price }">le produit</p>
-</tr>
+<div>
+    <a href="" data-th-href="@{/admin/product/add}">AJOUTER</a>
+    <div style="display: flex; flex-direction: column">
+        <tr data-th-each="product: ${ products }">
+            <div>
+                <td data-th-text="${ product.name }"></td>
+                <td data-th-text="${ product.description }"></td>
+                <td data-th-text="${ product.price }"></td>
+                <td data-th-text="${ product.image }"></td>
+                <td data-th-text="${ product.category.name }"></td>
+                <td><a href="" data-th-href="@{/admin/product/update/{id}(id=${product.id})}">UPDATE</a></td>
+                <td><a href="" data-th-href="@{/admin/product/delete/{id}(id=${product.id})}">DELETE</a></td>
+            </div>
+        </tr>
+    </div>
+</div>
 </body>
 </html>

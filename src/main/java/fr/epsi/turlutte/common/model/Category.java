@@ -6,16 +6,16 @@ import lombok.*;
 import java.util.List;
 
 @Entity @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
-public class Categorie {
+public class Category {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     @Id
     private Long id;
 
-    private String nom;
+    private String name;
 
     @ManyToOne
-    private Categorie categorie;
+    private Category category;
 
 }
 
