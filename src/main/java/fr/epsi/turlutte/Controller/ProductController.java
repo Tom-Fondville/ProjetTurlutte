@@ -21,7 +21,7 @@ public class ProductController {
     CategoryRepository categoryRepository;
 
 
-    @GetMapping(path = "/get")
+    @GetMapping(path = "/")
     public ModelAndView getProducts() {
         ModelAndView mav = new ModelAndView("product_template");
         mav.addObject("products", productService.getAllProduct());
@@ -54,13 +54,13 @@ public class ProductController {
                 .name(name)
                 .build();
         productRepository.save(newProduct);
-        return new ModelAndView("redirect:/admin/product/get");
+        return new ModelAndView("redirect:/admin/product/");
     }
 
     @GetMapping(path = "/delete/{id}")
     public ModelAndView deleteProductId(@PathVariable Long id) {
         productRepository.deleteById(id);
-        return new ModelAndView("redirect:/admin/product/get");
+        return new ModelAndView("redirect:/admin/product/");
     }
     @GetMapping(path = "/update/{id}")
     public ModelAndView updateProductId(@PathVariable Long id) {
@@ -89,7 +89,7 @@ public class ProductController {
         newProduct.setName(name);
 
         productRepository.save(newProduct);
-        return new ModelAndView("redirect:/admin/product/get");
+        return new ModelAndView("redirect:/admin/product/");
     }
 
 }

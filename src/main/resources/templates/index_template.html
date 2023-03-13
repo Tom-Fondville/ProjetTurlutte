@@ -1,22 +1,48 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Document</title>
 </head>
 <body>
 <header>
-    <h1>Bonsoir</h1>
-    <a href="" data-th-href="@{/admin/product/get}">admin</a>
+    <nav class="navbar bg-body-tertiary mb-5">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="" data-th-href="@{/}">Turlutte&Co</a>
+            <a class="btn btn-sm btn-outline-secondary" href="" data-th-href="@{/admin/product/}">Admin</a>
+        </div>
+    </nav>
 </header>
 
-<div>
+
+<div class="container">
+    <div class="row">
         <tr data-th-each="product: ${ products }">
-            <div>
-                <td data-th-text="${ product.name }"></td>
-                <td data-th-text="${ product.description }"></td>
-                <td data-th-text="${ product.price }"></td>
-                <td data-th-text="${ product.image }"></td>
-                <td data-th-text="${ product.category.name }"></td>
+            <div class="col-3">
+                <div class="card" style="width: 18rem">
+                    <div class="d-flex justify-content-center align-items-center" style="height: 13rem" >
+                        <img data-th-src="${ product.image }" style="max-width: 100%; max-height: 100%;"/>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><td data-th-text="${ product.name }"></td></h5>
+                        <p class="card-text"><td data-th-text="${ product.description }"></td></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" style="display: flex; justify-content: space-between">
+                            <p style="opacity: 50%; margin: 0">Prix :</p>
+                            <td data-th-text="${ product.price }"></td>
+                        </li>
+                        <li class="list-group-item" style="display: flex; justify-content: space-between">
+                            <p style="opacity: 50%; margin: 0">Catégorie :</p>
+                            <td data-th-text="${ product.category.name }"></td>
+                        </li>
+                    </ul>
+                        <a href="#" class="btn btn-primary" style="display: flex; justify-content: center; padding: 10px 0; width: 100%; background-color: #1F487E; color: #fff; border-radius: 0 0 5px 5px;">Ajouter au panier</a>
+                </div>
             </div>
         </tr>
     </div>
