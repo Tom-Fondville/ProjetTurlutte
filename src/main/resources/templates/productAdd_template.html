@@ -8,37 +8,37 @@
 <form  data-th-object="${product}"
        data-th-action="@{/admin/product/add}"
       method="post">
-  <input id="id" type="number" data-th-field="*{id}">
+  <input id="id" type="number" data-th-field="*{id}" required>
   <div>
     <label for="Name">Name</label>
     <input id="Name" type="text"
-           data-th-field="*{name}">
+           data-th-field="*{name}" required>
   </div>
   <div>
     <label for="Description">Description</label>
     <input id="Description" type="text"
-           data-th-field="*{description}">
+           data-th-field="*{description}" required>
   </div>
   <div>
     <label for="Image">Image</label>
     <input id="Image" type="text"
-           data-th-field="*{image}">
+           data-th-field="*{image}" required>
   </div>
   <div>
     <label for="Prix">Prix</label>
     <input id="Prix" type="number" step="0.01"
-           data-th-field="*{price}">
+           data-th-field="*{price}" required>
   </div>
   <div>
     <label for="Categorie">Category</label>
-    <select id="Categorie" name="Categorie" data-th-field="*{category}">
+    <select id="Categorie" name="Categorie" data-th-field="*{category}" required>
       <option data-th-each="category : ${categories}"
               data-th-value="${category.id}"
               data-th-text="${category.name}"
       >
     </select>
   </div>
-  <button type="submit">Create user</button>
+  <button type="submit">AJOUTER</button>
 </form>
 </body>
 </html>
