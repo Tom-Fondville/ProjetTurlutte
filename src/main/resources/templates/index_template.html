@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<header>
+    <h1>Bonsoir</h1>
+    <a href="" data-th-href="@{/admin/product/get}">admin</a>
+</header>
+
+<div>
+        <tr data-th-each="product: ${ products }">
+            <div>
+                <td data-th-text="${ product.name }"></td>
+                <td data-th-text="${ product.description }"></td>
+                <td data-th-text="${ product.price }"></td>
+                <td data-th-text="${ product.image }"></td>
+                <td data-th-text="${ product.category.name }"></td>
+            </div>
+        </tr>
+    </div>
+</div>
+</body>
+</html>
