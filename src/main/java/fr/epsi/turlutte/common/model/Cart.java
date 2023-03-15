@@ -5,15 +5,16 @@ import lombok.*;
 import java.util.List;
 
 @Entity @Setter @Getter @NoArgsConstructor @AllArgsConstructor @Builder
-public class Order {
+public class Cart {
 
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    @Id
     private Long id;
 
     private int idUser;
 
-    @ManyToMany
+    @OneToMany
     private List<Product> product;
 
 

@@ -1,6 +1,5 @@
 package fr.epsi.turlutte.common.model;
 
-import fr.epsi.turlutte.common.enums.Qualite;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,4 +20,5 @@ public class Product {
 
     @ManyToOne
     private Category category;
+
 }
