@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script type="text/javascript" th:src="@{/js/functions.js}" defer></script>
+    <script type="text/javascript" th:src="@{/js/commande.js}" defer></script>
+    <title>Document</title>
+</head>
+<body>
+
+<header>
+    <nav class="navbar bg-body-tertiary mb-5">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="" data-th-href="@{/}">Turlutte&Co</a>
+            <a class="btn btn-sm btn-outline-secondary" href="" data-th-href="@{/admin/product/}">Admin</a>
+        </div>
+    </nav>
+</header>
+
+<form  data-th-object="${commande}"
+       data-th-action="@{/commande/save}"
+       method="post">
+    <div class="mb-3 row">
+        <label for="nomClient" class="col-sm-2 col-form-label">Votre nom</label>
+        <div class="col-sm-10">
+            <input id="nomClient" type="text"
+                   data-th-field="*{nomClient}" required>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="prenomClient" class="col-sm-2 col-form-label">Votre prenom</label>
+        <div class="col-sm-10">
+            <input id="prenomClient" type="text"
+                   data-th-field="*{prenomClient}" required>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="AdresseLivraison" class="col-sm-2 col-form-label">Votre adresse de livraison</label>
+        <div class="col-sm-10">
+            <input id="AdresseLivraison" type="text"
+                   data-th-field="*{adresseLivraison}" required>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="AdresseCommande" class="col-sm-2 col-form-label">Votre adresse de commande</label>
+        <div class="col-sm-10">
+            <input id="AdresseCommande" type="text"
+                   data-th-field="*{adresseLivraison}" required>
+        </div>
+    </div>
+    <div class="mb-3 row">
+
+        <div class="col-sm-10">
+            <p id="prix"></p>
+        </div>
+    </div>
+    <div>
+        Vos produits:
+        <div class="mb-3 row" id="panierContainer">
+        </div>
+    </div>
+
+    <div id="endActionContainer">
+        <div id="validerCommande" class="btn btn-primary">valider</div>
+    </div>
+</form>
+</body>
+</html>
