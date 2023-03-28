@@ -45,6 +45,11 @@ function savePanier(){
 function ajoutPanier(name, id, price){
     const product = new Product(name, id, price)
     const divProduct = product.toHtmlElement()
+    divProduct.style.paddingBlock = "5px"
+    divProduct.style.display = "flex"
+    divProduct.style.justifyContent = "space-around"
+    divProduct.style.alignItems = "space-around"
+
 
     const panierContainer = document.getElementById("panierContainer")
     panierContainer.appendChild(divProduct)
@@ -74,6 +79,10 @@ function loadPanier(){
     getPanier()
     for (const product of products) {
         const divProduct = product.toHtmlElement()
+        divProduct.style.paddingBlock = "5px"
+        divProduct.style.display = "flex"
+        divProduct.style.justifyContent = "space-around"
+        divProduct.style.alignItems = "space-around"
         const panierContainer = document.getElementById("panierContainer")
         panierContainer.appendChild(divProduct)
     }

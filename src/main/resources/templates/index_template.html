@@ -20,8 +20,8 @@
     </nav>
 </header>
 
-
-<div class="container">
+<div class="row" style="margin-right: 0">
+<div style="width: 80%; padding-left: 50px">
     <div class="row">
         <tr data-th-each="product: ${ products }">
             <div class="col-4">
@@ -49,11 +49,14 @@
         </tr>
     </div>
 </div>
-
-<div>
-    <p> Panier </p>
-    <div id="panierContainer"></div>
-    <a href="" data-th-href="@{/commande/save}" style="display: none; width: 100px;" id="buyBtn" class="btn btn-primary">acheter</a>
+<div class="col-2">
+    <div class="card d-flex col justify-content-center align-items-center">
+        <h2> Panier </h2>
+        <div id="panierContainer"></div>
+        <a href="" data-th-href="@{/commande/save}" style="margin-top: 10px; display: none; width: 100%; background-color: #1F487E; color: #fff; border-radius: 0 0 5px 5px;" id="buyBtn" class="btn btn-primary">acheter</a>
+    </div>
 </div>
+</div>
+
 </body>
 </html>
