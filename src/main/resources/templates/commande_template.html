@@ -20,35 +20,37 @@
         </div>
     </nav>
 </header>
+        <div class="d-flex justify-content-center align-items-center">
+    <div class="card p-4">
 
 <form  data-th-object="${commande}"
        data-th-action="@{/commande/save}"
        method="post">
     <div class="mb-3 row">
-        <label for="nomClient" class="col-sm-2 col-form-label">Votre nom</label>
-        <div class="col-sm-10">
-            <input id="nomClient" type="text"
+        <label for="nomClient" class="col-sm-6 col-form-label">Votre nom</label>
+        <div class="col-sm-6">
+            <input class="form-control" id="nomClient" type="text"
                    data-th-field="*{nomClient}" required>
         </div>
     </div>
     <div class="mb-3 row">
-        <label for="prenomClient" class="col-sm-2 col-form-label">Votre prenom</label>
-        <div class="col-sm-10">
-            <input id="prenomClient" type="text"
+        <label for="prenomClient" class="col-sm-6 col-form-label">Votre prenom</label>
+        <div class="col-sm-6">
+            <input class="form-control" id="prenomClient" type="text"
                    data-th-field="*{prenomClient}" required>
         </div>
     </div>
     <div class="mb-3 row">
-        <label for="AdresseLivraison" class="col-sm-2 col-form-label">Votre adresse de livraison</label>
-        <div class="col-sm-10">
-            <input id="AdresseLivraison" type="text"
+        <label for="AdresseLivraison" class="col-sm-6 col-form-label">Votre adresse de livraison</label>
+        <div class="col-sm-6">
+            <input class="form-control" id="AdresseLivraison" type="text"
                    data-th-field="*{adresseLivraison}" required>
         </div>
     </div>
     <div class="mb-3 row">
-        <label for="AdresseCommande" class="col-sm-2 col-form-label">Votre adresse de commande</label>
-        <div class="col-sm-10">
-            <input id="AdresseCommande" type="text"
+        <label for="AdresseCommande" class="col-sm-6 col-form-label">Votre adresse de commande</label>
+        <div class="col-sm-6">
+            <input class="form-control" id="AdresseCommande" type="text"
                    data-th-field="*{adresseLivraison}" required>
         </div>
     </div>
@@ -65,8 +67,10 @@
     </div>
 
     <div id="endActionContainer">
-        <div id="validerCommande" class="btn btn-primary">valider</div>
+        <div id="validerCommande" class="btn btn-primary">Valider</div>
     </div>
 </form>
+</div>
+</div>
 </body>
 </html>
